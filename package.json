@@ -1,0 +1,19 @@
+{
+  "name": "hack-the-holidays",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.9.7"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-develop-server": "^0.2.5",
+    "run-sequence": "^1.0.2"
+  }
+}
