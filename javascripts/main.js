@@ -113,7 +113,7 @@ client.connect({
 function someoneLeft(evt) {
   console.log('someone left: ', evt);
   
-  if (call) {
+  if (call && !evt.target.connections.length) {
     call.hangup();
     call = null;
     $('#callControls').hide();
@@ -170,15 +170,28 @@ function doIPlaceTheCall(myName, theirName) {
 
 function onConnect(evt) {
   console.log('onConnet()', evt);
+  
   $(evt.element).addClass('remote-video');
-  $('#remoteVideoContainer').append(evt.element);
+  
+  if($('#remoteVideoContainer video').length) {
+	  $('#remoteVideoContainer video').replaceWith(evt.element);
+  } else {
+	  $('#remoteVideoContainer').append(evt.element);
+  }
+  
   $('#callControls').show();
 }
 
 function onLocalVideo(evt) {
   console.log('onLocalVideo()', evt);
+  
   $(evt.element).addClass('local-video');
-  $('#localVideoContainer').append(evt.element);
+  
+  if($('#localVideoContainer video').length) {
+	  $('#localVideoContainer video').replaceWith(evt.element);
+  } else {
+	  $('#localVideoContainer').append(evt.element);
+  }
 }
 
 function makeRandomString() {
