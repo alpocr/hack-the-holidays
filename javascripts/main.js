@@ -215,11 +215,8 @@ function parseUrl() {
 }
 
 function getUrl() {
-  if (!window.location.origin) {
-    window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
-  }
+	var components = window.location.href.split( '/' );
+	var baseUrl = components[0] + '//' + components[2] + '/' + components[3] + '/';
 
-  console.log('window.location.origin: ', window.location.origin);
-
-  return window.location.origin;
+	return baseUrl;
 }
